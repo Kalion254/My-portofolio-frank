@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact | Francis Kasimba</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- EMAILJS -->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+    <script>
+        (function () {
+            emailjs.init("HaVPCugTC7HB4mIkd");
+        })();
+    </script>
+
+    <style>
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 999;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <nav class="navbar">
+
+            <div class="logo">
+                Francis<span>.</span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="leadership.html">Leadership</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <!-- HEADER -->
+    <section class="page-section">
+
+        <div class="section-title">
+            <p>CONTACT</p>
+            <h2>Get In Touch</h2>
+        </div>
+
+        <div class="about-text">
+            <p>
+                I am open to collaborations, innovation, leadership opportunities and tech projects.
+            </p>
+        </div>
+
+    </section>
+
+    <!-- CONTACT FORM -->
+    <section class="skills-section">
+
+        <div class="contact-container">
+
+            <form id="contact-form">
+
+                <input type="text" name="name" placeholder="Full Name" required>
+
+                <input type="email" name="email" placeholder="Email Address" required>
+
+                <input type="text" name="subject" placeholder="Subject" required>
+
+                <textarea name="message" rows="8" placeholder="Write Your Message" required></textarea>
+
+                <button type="submit" class="btn primary-btn">
+                    Send Message
+                </button>
+
+                <br><br>
+
+                <a id="whatsapp-btn" target="_blank" style="
+                      display: inline-block;
+                      background: #25D366;
+                      color: white;
+                      padding: 10px 15px;
+                      border-radius: 6px;
+                      text-decoration: none;
+                      font-size: 14px;
+                   ">
+                    Send via WhatsApp
+                </a>
+
+                <p id="status"></p>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <!-- CONTACT INFO -->
+    <section class="page-section">
+
+        <div class="contact-info">
+
+            <div class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email Address</h3>
+                <p>irericharles50@gmail.com</p>
+            </div>
+
+            <div class="contact-card">
+                <i class="fas fa-phone"></i>
+                <h3>Phone Number</h3>
+                <p>+254 741 453 336</p>
+            </div>
+
+            <div class="contact-card">
+                <i class="fas fa-location-dot"></i>
+                <h3>Location</h3>
+                <p>Nairobi, Kenya</p>
+            </div>
+
+            <div class="contact-card">
+                <i class="fab fa-linkedin"></i>
+                <h3>LinkedIn</h3>
+                <p>linkedin.com/in/francis</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Francis Kasimba | Official Portfolio</p>
+    </footer>
+
+    <!-- EMAILJS SEND -->
+    <script>
+        document.getElementById("contact-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            emailjs.sendForm(
+                "service_jdod7vb",
+                "template_56vo3zq",
+                this
+            ).then(() => {
+                document.getElementById("status").innerText = "Message sent successfully!";
+                this.reset();
+            }, () => {
+                document.getElementById("status").innerText = "Failed to send message.";
+            });
+        });
+    </script>
+
+    <!-- WHATSAPP AUTO LINK -->
+    <script>
+        document.getElementById("contact-form").addEventListener("input", function () {
+
+            const name = document.querySelector("[name='name']").value;
+            const message = document.querySelector("[name='message']").value;
+
+            const phone = "254741453336"; // 🔴 CHANGE THIS
+
+            const text = `Hello Francis, my name is ${name}. ${message}`;
+
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+
+            document.getElementById("whatsapp-btn").href = url;
+        });
+    </script>
+
+    <!-- FLOATING WHATSAPP -->
+    <a href="https://wa.me/254741453336?text=Hello%20Francis%2C%20I%20came%20from%20your%20portfolio" target="_blank"
+        class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</body>
+
+</html>
